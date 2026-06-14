@@ -1,6 +1,6 @@
 # YandexWeatherCli — AI Skill для прогноза погоды
 
-**YandexWeatherCli** — CLI AI Skill для прогноза погоды через Yandex Weather API.
+**YandexWeatherCli** — cli для Yandex Weather HTTP API (у них оно зовётся `Тариф "Оптимальный"`).
 
 ## Быстрый старт
 
