@@ -1,0 +1,45 @@
+name: Build and Release Skill
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build with Maven
+        run: mvn clean package -B
+
+      - name: Extract version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Package release archive
+        run: |
+          mkdir -p release
+          cp target/yweather-1.0.0.jar release/yweather.jar
+          cp SKILL.md release/
+          cp places.json release/
+          cp api-key.txt.example release/
+          cd release
+          zip -r "../yweather-skill-${{ steps.version.outputs.VERSION }}.zip" .
+          cd ..
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: yweather-skill-${{ steps.version.outputs.VERSION }}.zip
+          generate_release_notes: true

@@ -13,5 +13,11 @@
     "names": ["Екатеринбург", "Yekaterinburg", "Ekaterinburg"],
     "lat": "56.837435",
     "lon": "60.597636"
+  },
+  {
+    "names":
+    ["Москва", "Moscow"],
+    "lat": 55.7558,
+    "lon": 37.6173
   }
 ]
