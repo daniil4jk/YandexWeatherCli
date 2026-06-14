@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.daniil4jk.yweather</groupId>
-    <artifactId>cli</artifactId>
+    <groupId>ru.daniil4jk</groupId>
+    <artifactId>yweather</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
@@ -32,7 +32,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>ru.daniil4jk.yweather.cli.YandexWeatherCli</mainClass>
+                            <mainClass>ru.daniil4jk.yweather.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -48,7 +48,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>ru.daniil4jk.yweather.cli.YandexWeatherCli</mainClass>
+                                    <mainClass>ru.daniil4jk.yweather.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

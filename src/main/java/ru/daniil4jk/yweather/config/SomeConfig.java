@@ -1,15 +1,10 @@
-package ru.daniil4jk.yweather.cli.config;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import ru.daniil4jk.yweather.cli.Place;
-import ru.daniil4jk.yweather.cli.PlaceLoader;
+package ru.daniil4jk.yweather.config;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 public abstract class SomeConfig {
     private final String fileName;
@@ -20,7 +15,7 @@ public abstract class SomeConfig {
 
     private File findFile() {
         try {
-            var location = PlaceLoader.class
+            var location = SomeConfig.class
                     .getProtectionDomain()
                     .getCodeSource()
                     .getLocation()

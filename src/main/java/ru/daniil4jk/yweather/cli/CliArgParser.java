@@ -1,5 +1,8 @@
 package ru.daniil4jk.yweather.cli;
 
+import ru.daniil4jk.yweather.config.PlaceLoader;
+import ru.daniil4jk.yweather.model.Place;
+
 import java.util.Arrays;
 import java.util.List;
 

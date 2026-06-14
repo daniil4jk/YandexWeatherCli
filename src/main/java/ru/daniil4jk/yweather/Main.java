@@ -1,13 +1,16 @@
-package ru.daniil4jk.yweather.cli;
+package ru.daniil4jk.yweather;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ru.daniil4jk.yweather.cli.config.ApiKeyConfig;
-import ru.daniil4jk.yweather.cli.config.PlacesConfig;
+import ru.daniil4jk.yweather.cli.CliArgParser;
+import ru.daniil4jk.yweather.client.ForecastParser;
+import ru.daniil4jk.yweather.client.WeatherClient;
+import ru.daniil4jk.yweather.config.ApiKeyConfig;
+import ru.daniil4jk.yweather.config.PlaceLoader;
+import ru.daniil4jk.yweather.config.PlacesConfig;
+import ru.daniil4jk.yweather.format.ConditionMapper;
+import ru.daniil4jk.yweather.format.WeatherFormatter;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-
-public class YandexWeatherCli {
+public class Main {
 
     public static void main(String[] args) throws Exception {
         var objectMapper = new ObjectMapper();

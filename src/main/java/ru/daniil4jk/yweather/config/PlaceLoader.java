@@ -1,11 +1,9 @@
-package ru.daniil4jk.yweather.cli;
+package ru.daniil4jk.yweather.config;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ru.daniil4jk.yweather.model.Place;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 public final class PlaceLoader {
@@ -20,9 +18,8 @@ public final class PlaceLoader {
         this.placesJson = placesJson;
     }
 
-    @SuppressWarnings("unchecked")
     public List<Place> load() throws Exception {
-        return (List<Place>) mapper.readValue(placesJson, List.class);
+        return mapper.readValue(placesJson, new TypeReference<List<Place>>() {});
     }
 
     public Place findByName(String name) throws Exception {

@@ -1,4 +1,4 @@
-package ru.daniil4jk.yweather.cli;
+package ru.daniil4jk.yweather.format;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

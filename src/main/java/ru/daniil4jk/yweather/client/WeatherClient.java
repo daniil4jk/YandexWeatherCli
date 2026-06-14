@@ -1,6 +1,8 @@
-package ru.daniil4jk.yweather.cli;
+package ru.daniil4jk.yweather.client;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ru.daniil4jk.yweather.cli.CliArgs;
+import ru.daniil4jk.yweather.model.Forecast;
 
 import java.net.URI;
 import java.net.http.HttpClient;

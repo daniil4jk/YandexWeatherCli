@@ -1,4 +1,10 @@
-package ru.daniil4jk.yweather.cli;
+package ru.daniil4jk.yweather.format;
+
+import ru.daniil4jk.yweather.cli.CliArgs;
+import ru.daniil4jk.yweather.cli.HourFilter;
+import ru.daniil4jk.yweather.model.DayForecast;
+import ru.daniil4jk.yweather.model.Forecast;
+import ru.daniil4jk.yweather.model.HourForecast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,19 +15,6 @@ public final class WeatherFormatter {
 
     public WeatherFormatter(ConditionMapper conditionMapper) {
         this.conditionMapper = conditionMapper;
-    }
-
-    private static String formatTemp(double t) {
-        return String.format("%+.0f", t);
-    }
-
-    private static String precTypeString(int t) {
-        return switch (t) {
-            case 0 -> "none";
-            case 1 -> "rain";
-            case 2 -> "snow";
-            default -> "?";
-        };
     }
 
     public void printCompact(Forecast forecast, CliArgs cfg) {
@@ -59,6 +52,19 @@ public final class WeatherFormatter {
             case "humidity" -> String.format("%.0f%%", h.humidity());
             case "wind_dir" -> conditionMapper.windDir(h.windDir());
             default -> "";
+        };
+    }
+
+    private static String formatTemp(double t) {
+        return String.format("%+.0f", t);
+    }
+
+    private static String precTypeString(int t) {
+        return switch (t) {
+            case 0 -> "none";
+            case 1 -> "rain";
+            case 2 -> "snow";
+            default -> "?";
         };
     }
 }
