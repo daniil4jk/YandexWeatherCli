@@ -5,6 +5,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public final class WeatherClient {
 
@@ -23,7 +25,7 @@ public final class WeatherClient {
 
         HttpRequest req = HttpRequest.newBuilder()
             .uri(URI.create(url))
-            .header("X-Yandex-Weather-Key", CliArgs.DEFAULT_KEY)
+            .header("X-Yandex-Weather-Key", Files.readString(Path.of("api-key.txt")))
             .GET()
             .build();
 

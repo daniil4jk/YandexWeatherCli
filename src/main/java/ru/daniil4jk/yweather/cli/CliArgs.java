@@ -9,7 +9,6 @@ public record CliArgs(
     HourFilter hourFilter,
     List<String> fields
 ) {
-    static final String DEFAULT_KEY = "6591d2b4-ab45-4a2e-ab81-0c8a21c41828";
     private static final String DEFAULT_FIELDS =
         "hour,temp,feels_like,condition,prec_strength,prec_type,wind_speed,wind_gust,humidity";
 
