@@ -28,7 +28,6 @@ public final class WeatherFormatter {
         HourFilter filter = cfg.hourFilter();
         List<String> fieldList = cfg.fields();
 
-        System.out.println("@@WEATHER@@");
         System.out.println("date|" + String.join("|", fieldList));
 
         for (DayForecast day : forecast.days()) {

@@ -13,38 +13,16 @@ public final class PlaceLoader {
     private static final String FILE_NAME = "places.json";
 
     private final ObjectMapper mapper;
+    private final String placesJson;
 
-    public PlaceLoader(ObjectMapper mapper) {
+    public PlaceLoader(ObjectMapper mapper, String placesJson) {
         this.mapper = mapper;
+        this.placesJson = placesJson;
     }
 
-    private static File findFile() throws Exception {
-        try {
-            var location = PlaceLoader.class
-                    .getProtectionDomain()
-                    .getCodeSource()
-                    .getLocation()
-                    .toURI();
-            Path jarDir = Paths.get(location).getParent();
-            if (jarDir != null) {
-                File f = jarDir.resolve(FILE_NAME).toFile();
-                if (f.isFile()) return f;
-            }
-        } catch (Exception ignored) {
-        }
-        File f = Paths.get("").resolve(FILE_NAME).toFile();
-        if (f.isFile()) return f;
-        return null;
-    }
-
+    @SuppressWarnings("unchecked")
     public List<Place> load() throws Exception {
-        File file = findFile();
-        if (file == null) {
-            System.err.println("Файл " + FILE_NAME + " не найден ни рядом с JAR, ни в текущей папке.");
-            System.exit(1);
-        }
-        return mapper.readValue(file, new TypeReference<List<Place>>() {
-        });
+        return (List<Place>) mapper.readValue(placesJson, List.class);
     }
 
     public Place findByName(String name) throws Exception {
